@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Basic project info -->
+    <groupId>org.example</groupId>
+    <artifactId>Project1</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>Project1</name>
+    <packaging>war</packaging>
+
+    <!-- General settings for the project  -->
+    <properties>
+        <!-- So the project can handle special characters -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Java version for the compiled code -->
+        <maven.compiler.target>11</maven.compiler.target>
+        <!-- Java version for writing the code -->
+        <maven.compiler.source>11</maven.compiler.source>
+        <!-- the version of Junit -->
+        <junit.version>5.10.2</junit.version>
+    </properties>
+
+    <!-- Tools and libraries used in this project -->
+    <dependencies>
+        <!-- Jakarta EE library for building web apps -->
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-web-api</artifactId>
+            <version>9.1.0</version>
+            <!-- The provided scope means that the server will always have this library when it runs -->
+            <scope>provided</scope>
+        </dependency>
+        <!-- Junit library for writing test cases -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <!-- this scope means it is for test and not the final app -->
+            <scope>test</scope>
+        </dependency>
+        <!-- Junit library to actually run the tests -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- tools when building the app -->
+    <build>
+        <plugins>
+            <!-- The plugin that creates the WAR file which is needed to run the app on a server -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

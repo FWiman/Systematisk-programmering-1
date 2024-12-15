@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<!--  This file is responsible for how the application connects to the database and also the configurations. -->
+
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+    <!-- Defining the persistence unit -->
+    <persistence-unit name="default" transaction-type="JTA">
+        <!-- The datasource that is used -->
+        <jta-data-source>jdbc/__default</jta-data-source>
+        <!-- Defining what props that is used -->
+        <properties>
+            <!-- This property instructs EclipseLink to generate database schema  -->
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <!-- Determines where the DDL commands are sent -->
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+            <!-- create the schema if it doesn't exist -->
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+        </properties>
+    </persistence-unit>
+</persistence>
